@@ -6,6 +6,7 @@
     <meta name="description" content="Simple Product Link Page">
     <title>Product Links</title>
     <style>
+        /* สไตล์พื้นฐานของ body */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -15,6 +16,8 @@
             justify-content: center;
             background-color: #f4f4f9;
         }
+
+        /* สไตล์สำหรับส่วนข้อมูลเจ้าของเว็บไซต์ */
         .owner-info {
             width: 100%;
             text-align: center;
@@ -22,20 +25,28 @@
             background-color: #ffffff;
             border-bottom: 1px solid #ddd;
         }
+
+        /* สไตล์สำหรับภาพเจ้าของ */
         .owner-info img {
             width: 100px;
             height: 100px;
             border-radius: 50%;
         }
+
+        /* สไตล์สำหรับชื่อและคำอธิบายเจ้าของ */
         .owner-info h2, .owner-info p {
             margin: 5px 0;
         }
+
+        /* สไตล์สำหรับการแสดงลิงก์ติดต่อ */
         .contact-links {
             display: flex;
             justify-content: center;
             gap: 20px;
             margin-top: 10px;
         }
+
+        /* สไตล์สำหรับลิงก์ในส่วนข้อมูลติดต่อ */
         .contact-links a {
             text-decoration: none;
             color: #007bff;
@@ -44,21 +55,29 @@
             align-items: center;
             gap: 5px;
         }
+
+        /* ขนาดของโลโก้แอปต่างๆ */
         .contact-links img {
             width: 24px;
             height: 24px;
         }
+
+        /* สไตล์ช่องค้นหา */
         .search-bar {
             width: 100%;
             padding: 10px;
             text-align: center;
         }
+
+        /* สไตล์สำหรับช่อง input */
         .search-bar input {
             width: 50%;
             padding: 8px;
             border-radius: 5px;
             border: 1px solid #ddd;
         }
+
+        /* สไตล์สำหรับการแสดงรูปสินค้า */
         .product img {
             width: 150px;
             height: 150px;
@@ -66,68 +85,104 @@
             border-radius: 10px;
             transition: transform 0.2s;
         }
+
+        /* เอฟเฟ็กต์เมื่อเอาเมาส์ไปชี้ที่รูปสินค้า */
         .product img:hover {
             transform: scale(1.05);
+        }
+
+        /* สไตล์สำหรับข้อความ "ไม่พบสินค้า" */
+        .no-results {
+            text-align: center;
+            font-size: 18px;
+            color: red;
+            display: none; /* ซ่อนข้อความโดยเริ่มต้น */
         }
     </style>
 </head>
 <body>
+    <!-- ข้อมูลเจ้าของเว็บไซต์ -->
     <div class="owner-info">
-        <img src="https://via.placeholder.com/100" alt="Owner">
-        <h2>Nutnarinthon Boonma</h2>
-        <p>ติดต่อคลิกข้างล่าง ซื้อสินค้ากดที่รูปได้เลย</p>
+        <img src="https://via.placeholder.com/100" alt="Owner"> <!-- รูปเจ้าของ -->
+        <h2>Nutnarinthon Boonma</h2> <!-- ชื่อเจ้าของ -->
+        <p>ติดต่อคลิกข้างล่าง ซื้อสินค้ากดที่รูปได้เลย</p> <!-- คำอธิบาย -->
         <div class="contact-links">
-            <a href="https://www.facebook.com/" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg"></a>
-            <a href="https://www.instagram.com/" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"></a>
-            <a href="https://line.me/" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg"></a>
-            <a href="mailto:nutnarinthon645@gmail.com"><img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png"></a>
+            <!-- ลิงก์ไปยัง Facebook -->
+            <a href="https://www.facebook.com/" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg">
+            </a>
+            <!-- ลิงก์ไปยัง Instagram -->
+            <a href="https://www.instagram.com/" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png">
+            </a>
+            <!-- ลิงก์ไปยัง Line -->
+            <a href="https://line.me/" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg">
+            </a>
+            <!-- ลิงก์ไปยัง Gmail -->
+            <a href="mailto:nutnarinthon645@gmail.com">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png">
+            </a>
         </div>
     </div>
 
+    <!-- ช่องค้นหาสินค้า -->
     <div class="search-bar">
-        <input type="text" id="search" placeholder="Search products..." oninput="filterProducts()">
+        <input type="text" id="search" placeholder="Search products..." oninput="filterProducts()"> <!-- input สำหรับค้นหา -->
     </div>
 
+    <!-- แสดงสินค้าทั้งหมด -->
     <div id="product-container"></div>
-    <p id="no-results" class="no-results" style="display: none;">ไม่พบสินค้า</p>
+
+    <!-- ข้อความเมื่อไม่พบสินค้า -->
+    <p id="no-results" class="no-results">ไม่พบสินค้า</p>
 
     <script>
+        // ข้อมูลสินค้า
         const products = [
             { name: "Nubwo NK51 Wireless Mechanical Keyboard", image: "https://down-th.img.susercontent.com/file/th-11134207-7r992-lzubz6v9mze1d7.webp", link: "https://s.shopee.co.th/AKO1DJCSXo" },
             { name: "Product 2", image: "https://via.placeholder.com/200", link: "https://example.com/product2" },
             { name: "Product 3", image: "https://via.placeholder.com/200", link: "https://example.com/product3" }
         ];
 
-        const container = document.getElementById("product-container");
-        const noResults = document.getElementById("no-results");
+        const container = document.getElementById("product-container"); // ตัวแปรที่เก็บ element ที่จะใส่สินค้าลงไป
+        const noResults = document.getElementById("no-results"); // ตัวแปรที่เก็บข้อความ "ไม่พบสินค้า"
 
+        // ฟังก์ชันแสดงสินค้าที่กรองมา
         function displayProducts(filteredProducts) {
-            container.innerHTML = "";
-            if (filteredProducts.length === 0) {
-                noResults.style.display = "block";
-                displayProducts(products);
-            } else {
-                noResults.style.display = "none";
-                filteredProducts.forEach(product => {
-                    const productDiv = document.createElement("div");
-                    productDiv.className = "product";
-                    productDiv.innerHTML = `
-                        <a href="${product.link}" target="_blank">
-                            <img src="${product.image}" alt="${product.name}">
-                        </a>
-                        <p>${product.name}</p>
-                    `;
-                    container.appendChild(productDiv);
-                });
-            }
+            container.innerHTML = ""; // เคลียร์สินค้าก่อนหน้า
+
+            filteredProducts.forEach(product => {
+                const productDiv = document.createElement("div"); // สร้าง div สำหรับสินค้า
+                productDiv.className = "product"; // เพิ่มคลาสให้กับ div
+
+                productDiv.innerHTML = `
+                    <a href="${product.link}" target="_blank">
+                        <img src="${product.image}" alt="${product.name}">
+                    </a>
+                    <p>${product.name}</p>
+                `; // เพิ่ม HTML สำหรับสินค้า
+
+                container.appendChild(productDiv); // เพิ่ม div ของสินค้าไปยัง container
+            });
         }
 
+        // ฟังก์ชันค้นหาสินค้า
         function filterProducts() {
-            const searchTerm = document.getElementById("search").value.toLowerCase().trim();
-            const filtered = products.filter(product => product.name.toLowerCase().includes(searchTerm));
-            displayProducts(filtered);
+            const searchTerm = document.getElementById("search").value.toLowerCase().trim(); // คำค้นหาจากช่อง input
+            const filtered = products.filter(product => product.name.toLowerCase().includes(searchTerm)); // กรองสินค้าที่ชื่อสินค้าตรงกับคำค้นหา
+
+            // หากไม่พบสินค้า
+            if (filtered.length === 0) {
+                noResults.style.display = "block"; // แสดงข้อความ "ไม่พบสินค้า"
+            } else {
+                noResults.style.display = "none"; // ซ่อนข้อความ "ไม่พบสินค้า"
+            }
+
+            displayProducts(filtered); // แสดงสินค้าที่กรองมา
         }
 
+        // แสดงสินค้าทั้งหมดเมื่อโหลดหน้าเว็บ
         displayProducts(products);
     </script>
 </body>
