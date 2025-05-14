@@ -47,6 +47,19 @@
             { name: "Product 3", image: "https://via.placeholder.com/200", link: "https://example.com/product3" }
         ];
 
+        function searchProduct() {
+            const input = document.getElementById("searchInput").value.trim();
+            const result = products.find(product => product.product_name.toLowerCase() === input.toLowerCase());
+ 
+            const resultDisplay = document.getElementById("result");
+ 
+            if (result) {
+                resultDisplay.textContent = `Product: ${result.product_name}, Price: $${result.product_price}`;
+            } else {
+                resultDisplay.textContent = "Product not found.";
+            }
+        };
+
         const container = document.getElementById("product-container");
         products.forEach(product => {
             const productDiv = document.createElement("div");
