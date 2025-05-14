@@ -14,23 +14,23 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            background-color: #f4f4f9;
+            background-color: #F0E6EF; /* เปลี่ยนเป็นสีเขียว */
             overflow-x: hidden;
         }
 
         /* Owner information section */
         .owner-info {
             width: 100%;
-            max-width: 800px;
+            /*max-width: 800px;*/
             text-align: center;
             padding: 20px 0;
-            background-color: #ffffff;
+            background-color: #CBBAED;
             border-bottom: 1px solid #ddd;
         }
 
         .owner-info img {
-            width: 100px;
-            height: 100px;
+            width: 75px;
+            height: 75px;
             border-radius: 50%;
         }
 
@@ -44,8 +44,8 @@
         }
 
         .contact-links img {
-            width: 24px;
-            height: 24px;
+            width: 30px;
+            height: 30px;
         }
 
         /* Search bar styling */
@@ -65,9 +65,29 @@
         }
 
         /* Product display styling */
+        #product-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
         .product {
-            margin: 10px;
-            text-align: center;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            padding: 16px;
+            margin: 0;
+            width: 180px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: box-shadow 0.2s;
+        }
+
+        .product:hover {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
         }
 
         .product img {
@@ -96,6 +116,74 @@
                 flex-wrap: nowrap;
             }
         }
+
+        /* footer styling */
+
+        .footer-horizontal {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 24px;
+            background-color: #CBBAED;
+            border-top: 1px solid #ddd;
+            padding: 20px 0;
+            width: 100%;
+        }
+        .footer-horizontal img {
+            margin: 0;
+        }
+        .footer-info-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+            gap: 8px;
+        }
+        .footer-info-content-row {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 32px;
+        }
+        .footer-info-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+            gap: 4px;
+        }
+        .contact-links-footer {
+            flex-direction: row;
+            gap: 15px;
+        }
+        @media (max-width: 600px) {
+            .footer-horizontal {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .footer-info-content {
+                align-items: center;
+                text-align: center;
+            }
+            .footer-info-content-row {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 12px;
+            }
+            .footer-info-text {
+                align-items: center;
+                text-align: center;
+            }
+        }
+        .footer-profile-img {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0;
+}
     </style>
 </head>
 <body>
@@ -163,5 +251,23 @@
         // Initial display of all products
         displayProducts(products);
     </script>
+    <!-- เพิ่มความห่างข้างบน footer -->
+    <div style="height: 20px;"></div>
+    <!-- Footer Information Section display same owner information -->
+    <div class="owner-info footer-horizontal">
+        <img class="footer-profile-img" src="https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/bc37bb79b0361913165a583742e6ff63~tplv-tiktokx-cropcenter:720:720.jpeg?dr=14579&refresh_token=3c38ec4c&x-expires=1747386000&x-signature=v0FIV%2BnxFX9P6DRZ5NX5UbYPU70%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=my" alt="Owner">
+        <div class="footer-info-content-row">
+            <div class="footer-info-text">
+                <!-- <p>Nutnarinthon Boonma</p> -->
+                <p>ฝากติดตามละเป็นกำลังใจให้ด้วยนะครับ</p>
+            </div>
+            <div class="contact-links contact-links-footer">
+                <a href="https://www.facebook.com/lostzg" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg"></a>
+                <a href="https://www.instagram.com/nutnarinthon?igsh=MTJvb2pkeGpoNWo0OQ%3D%3D&utm_source=qr" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"></a>
+                <a href="https://line.me/ti/p/Hw719EMjFu" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg"></a>
+                <a href="mailto:nutnarinthon645@gmail.com"><img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png"></a>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
